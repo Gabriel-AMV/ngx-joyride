@@ -41,7 +41,12 @@ export class DocumentService implements IDocumentService {
     }
 
     getElementFixedTop(elementRef: ElementRef) {
-        return elementRef.nativeElement.getBoundingClientRect().top;
+        const scrollOffsets = this.getScrollOffsets();
+
+        return (
+            elementRef.nativeElement.getBoundingClientRect().top +
+            scrollOffsets.y
+        );
     }
 
     getElementFixedLeft(elementRef: ElementRef) {
